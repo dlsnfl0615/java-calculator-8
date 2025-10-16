@@ -27,7 +27,8 @@ public class CustomDelimiter {
 
         // 올바른 커스텀 구분자인 경우
         if (isPerfectMatch) {
-            return new String[]{matcher.group(1), matcher.group(2)};
+            String delimiters = matcher.group(1) + "|,|:";
+            return new String[]{delimiters, matcher.group(2)};
         }
 
         // 기본 구분자를 사용한 경우
