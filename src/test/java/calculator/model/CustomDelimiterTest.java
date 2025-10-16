@@ -14,7 +14,7 @@ public class CustomDelimiterTest {
         String[] result = delimiter.separate("//a\n1,2.3a4");
         String customDelimiter = result[0];
         String numbers = result[1];
-        Assertions.assertThat(customDelimiter).isEqualTo("a");
+        Assertions.assertThat(customDelimiter).isEqualTo("a|,|:");
         Assertions.assertThat(numbers).isEqualTo("1,2.3a4");
     }
 
@@ -25,7 +25,7 @@ public class CustomDelimiterTest {
         String[] result = delimiter.separate("//asdf\n1,2:3asdf4");
         String customDelimiter = result[0];
         String numbers = result[1];
-        Assertions.assertThat(customDelimiter).isEqualTo("asdf");
+        Assertions.assertThat(customDelimiter).isEqualTo("asdf|,|:");
         Assertions.assertThat(numbers).isEqualTo("1,2:3asdf4");
     }
 
@@ -36,7 +36,7 @@ public class CustomDelimiterTest {
         String[] result = delimiter.separate("///\n1,2:3/4");
         String customDelimiter = result[0];
         String numbers = result[1];
-        Assertions.assertThat(customDelimiter).isEqualTo("/");
+        Assertions.assertThat(customDelimiter).isEqualTo("/|,|:");
         Assertions.assertThat(numbers).isEqualTo("1,2:3/4");
     }
 
@@ -47,7 +47,7 @@ public class CustomDelimiterTest {
         String[] result = delimiter.separate("//\\\n1,2:3\\4");
         String customDelimiter = result[0];
         String numbers = result[1];
-        Assertions.assertThat(customDelimiter).isEqualTo("\\");
+        Assertions.assertThat(customDelimiter).isEqualTo("\\|,|:");
         Assertions.assertThat(numbers).isEqualTo("1,2:3\\4");
     }
 
