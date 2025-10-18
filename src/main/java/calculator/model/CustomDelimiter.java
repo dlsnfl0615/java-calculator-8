@@ -27,7 +27,10 @@ public class CustomDelimiter {
 
         // 올바른 커스텀 구분자인 경우
         if (isPerfectMatch) {
-            String delimiters = matcher.group(1) + "|,|:";
+            String customDelimiter = matcher.group(1);
+            // 역슬래시가 입력된 경우 이스케이프 처리하지 않고 문자 그대로 입력받기 위해서
+            String quotedCustomDelimiter = Pattern.quote(customDelimiter);
+            String delimiters = quotedCustomDelimiter + "|" + DEFAULT_DELIMITER;
             return new String[]{delimiters, matcher.group(2)};
         }
 
