@@ -7,7 +7,7 @@ public class CustomDelimiter {
     // 기본 구분자: 쉼표 또는 콜론
     private static final String DEFAULT_DELIMITER = ",|:";
     // 커스텀 구분자 패턴: "//(.)\n(.*)"
-    private static final Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile("//(.+)\n(.*)");
+    private static final Pattern CUSTOM_DELIMITER_PATTERN = Pattern.compile("//(.+)\\\\n(.*)");
 
     // 입력 문자열에서 [구분자, 숫자부분] 배열을 추출하여 반환
     public String[] separate(String text) {
