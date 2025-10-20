@@ -11,10 +11,10 @@ public class CustomDelimiterTest {
     @DisplayName("하나의 문자를 가지는 커스텀 구분자")
     void add_with_single_char_delimiter() {
         CustomDelimiter delimiter = new CustomDelimiter();
-        String[] result = delimiter.separate("//a\n1,2.3a4");
+        String[] result = delimiter.separate("//a\\n1,2.3a4");
         String customDelimiter = result[0];
         String numbers = result[1];
-        Assertions.assertThat(customDelimiter).isEqualTo("a|,|:");
+        Assertions.assertThat(customDelimiter).isEqualTo("\\Qa\\E|,|:");
         Assertions.assertThat(numbers).isEqualTo("1,2.3a4");
     }
 
@@ -22,10 +22,10 @@ public class CustomDelimiterTest {
     @DisplayName("여러개의 문자를 가지는 커스텀 구분자")
     void add_with_plural_char_delimiter() {
         CustomDelimiter delimiter = new CustomDelimiter();
-        String[] result = delimiter.separate("//asdf\n1,2:3asdf4");
+        String[] result = delimiter.separate("//asdf\\n1,2:3asdf4");
         String customDelimiter = result[0];
         String numbers = result[1];
-        Assertions.assertThat(customDelimiter).isEqualTo("asdf|,|:");
+        Assertions.assertThat(customDelimiter).isEqualTo("\\Qasdf\\E|,|:");
         Assertions.assertThat(numbers).isEqualTo("1,2:3asdf4");
     }
 
@@ -33,10 +33,10 @@ public class CustomDelimiterTest {
     @DisplayName("커스텀 구분자가 슬래시")
     void add_with_slash_delimiter() {
         CustomDelimiter delimiter = new CustomDelimiter();
-        String[] result = delimiter.separate("///\n1,2:3/4");
+        String[] result = delimiter.separate("///\\n1,2:3/4");
         String customDelimiter = result[0];
         String numbers = result[1];
-        Assertions.assertThat(customDelimiter).isEqualTo("/|,|:");
+        Assertions.assertThat(customDelimiter).isEqualTo("\\Q/\\E|,|:");
         Assertions.assertThat(numbers).isEqualTo("1,2:3/4");
     }
 
@@ -44,10 +44,10 @@ public class CustomDelimiterTest {
     @DisplayName("커스텀 구분자가 역슬래시")
     void add_with_backslash_delimiter() {
         CustomDelimiter delimiter = new CustomDelimiter();
-        String[] result = delimiter.separate("//\\\n1,2:3\\4");
+        String[] result = delimiter.separate("//\\\\n1,2:3\\4");
         String customDelimiter = result[0];
         String numbers = result[1];
-        Assertions.assertThat(customDelimiter).isEqualTo("\\|,|:");
+        Assertions.assertThat(customDelimiter).isEqualTo("\\Q\\\\E|,|:");
         Assertions.assertThat(numbers).isEqualTo("1,2:3\\4");
     }
 
